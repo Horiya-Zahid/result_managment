@@ -237,7 +237,8 @@ if sidebar_option == "Add Result":
             # Load or create class-specific file
             if os.path.exists(class_file):
                 df = pd.read_csv(class_file)
-                df = df.append(new_data, ignore_index=True)
+                df = pd.concat([df, pd.DataFrame([new_data])], ignore_index=True)
+
             else:
                 df = pd.DataFrame([new_data])
 
